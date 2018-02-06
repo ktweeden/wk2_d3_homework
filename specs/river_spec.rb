@@ -5,7 +5,8 @@ require_relative("../river")
 class RiverTest < MiniTest::Test
 
   def setup
-    @river = River.new("Amazon", 3)
+    @river = River.new("Amazon")
+    @number_of_fish = @river.fish().length
   end
 
   def test_get_river_name
@@ -13,16 +14,16 @@ class RiverTest < MiniTest::Test
   end
 
   def test_populate_river
-    assert_equal(3, @river.fish().count)
+    assert(@river.fish().count >=10 && @river.fish().count < 30)
   end
 
   def test_remove_fish
     @river.remove_fish()
-    assert_equal(2, @river.fish().count)
+    assert_equal(@number_of_fish -1, @river.fish().count)
   end
 
   def test_count_fish
-    assert_equal(3, @river.count_fish)
+    assert_equal(@number_of_fish, @river.count_fish)
   end
 
 end

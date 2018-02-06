@@ -3,17 +3,18 @@ require_relative("fish")
 class River
 
   attr_reader :name, :fish
-  def initialize(name, fish_number)
+
+  def initialize(name)
     @name = name
     @fish = []
-    populate_river(fish_number)
+    populate_river()
   end
 
-  def populate_river(number_of_fish)
+  def populate_river()
     potential_names = ["Flounder", "Flotsam", "Jetsam", "Bee", "Bo", "Hermintrude"]
-    number_of_fish.times do |x|
-      name = potential_names[rand(0..6)]
-      @fish.push(Fish.new(name))
+    rand(10..50).times do |x|
+      name = potential_names[rand(0..5)]
+      @fish << Fish.new(name)
     end
   end
 
@@ -24,7 +25,5 @@ class River
   def count_fish()
     return @fish.count
   end
-
-
 
 end
