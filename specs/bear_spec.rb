@@ -7,12 +7,13 @@ class BearTest < MiniTest::Test
 
   def setup
     @bear = Bear.new("Yogi")
-    @river = River.new("Amazon", 3)
+    @river = River.new("Amazon")
+    @number_of_fish = @river.fish().length
   end
 
   def test_take_fish()
     @bear.take_fish(@river)
-    assert_equal(2, @river.fish.count)
+    assert_equal(@number_of_fish -1, @river.fish.count)
   end
 
   def test_roar()
